@@ -1,4 +1,4 @@
-import { get } from "apiHelpers";
+import { get } from "../../apiHelpers";
 import { useState, useCallback, useEffect } from "react";
 
 const useGet = url => {

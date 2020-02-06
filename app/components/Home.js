@@ -1,20 +1,40 @@
 // @flow
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import routes from "../constants/routes.json";
-import styles from "./Home.css";
+import React, { useState } from "react";
+import useGet from "../hooks/useGet";
+import { SERVER_IP } from "../constants.js";
 
-type Props = {};
+const Home = () => {
+  const [cardId, setCardId] = useState(null);
+  const [idToGet, setIdToGet] = useState("01IO012T2");
+  const { data: card, loading } = useGet(`card/${idToGet}`);
 
-export default class Home extends Component<Props> {
-  props: Props;
+  return (
+    <div className="App">
+      {loading ? null : (
+        <React.Fragment>
+          <p>{`${card.name}${
+            card.flavorText ? `: ${card.flavorText}` : ""
+          }`}</p>
+          <p>Ref associées : {card.associatedCardRefs.toString()} </p>
+        </React.Fragment>
+      )}
+      <form
+        onSubmit={e => {
+          e.preventDefault();
+          setIdToGet(cardId);
+        }}
+      >
+        <input
+          type="text"
+          onChange={({ target: { value } }) => {
+            setCardId(value);
+          }}
+        />
+        <button type="submit">valider</button>
+        <img alt="" src={`http://${SERVER_IP}:8080/card/${idToGet}/image`} />
+      </form>
+    </div>
+  );
+};
 
-  render() {
-    return (
-      <div className={styles.container} data-tid="container">
-        <h2>Home</h2>
-        <Link to={routes.COUNTER}>to Counter</Link>
-      </div>
-    );
-  }
-}
+export default Home;

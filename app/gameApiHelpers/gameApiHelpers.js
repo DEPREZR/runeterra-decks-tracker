@@ -1,4 +1,4 @@
-import { CLIENT_IP } from "constants.js";
+import { CLIENT_IP } from "../constants.js";
 
 export const getCurrentDeck = async () => {
   try {

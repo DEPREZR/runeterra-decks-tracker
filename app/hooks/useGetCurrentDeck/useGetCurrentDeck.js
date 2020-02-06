@@ -1,4 +1,4 @@
-import { getCurrentDeck } from "gameApiHelpers";
+import { getCurrentDeck } from "../../gameApiHelpers";
 import { useState, useEffect } from "react";
 
 const useGetCurrentDeck = () => {
