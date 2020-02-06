@@ -23,8 +23,6 @@
     "package-linux": "yarn build && electron-builder build --linux",
     "package-win": "yarn build && electron-builder build --win --x64",
     "postinstall": "node -r @babel/register internals/scripts/CheckNativeDep.js && yarn flow-typed && electron-builder install-app-deps && yarn build-dll && opencollective-postinstall",
-    "postlint-fix": "prettier --ignore-path .eslintignore --single-quote --write '**/*.{js,jsx,json,html,css,less,scss,yml}'",
-    "postlint-styles-fix": "prettier --ignore-path .eslintignore --single-quote --write '**/*.{css,scss}'",
     "preinstall": "node ./internals/scripts/CheckYarn.js",
     "prestart": "yarn build",
     "start": "cross-env NODE_ENV=production electron ./app/main.prod.js",
@@ -35,25 +33,6 @@
     "test-e2e": "node -r @babel/register ./internals/scripts/CheckBuildsExist.js && cross-env NODE_ENV=test testcafe electron:./app ./test/e2e/HomePage.e2e.js",
     "test-e2e-live": "node -r @babel/register ./internals/scripts/CheckBuildsExist.js && cross-env NODE_ENV=test testcafe --live electron:./app ./test/e2e/HomePage.e2e.js",
     "test-watch": "yarn test --watch"
-  },
-  "lint-staged": {
-    "*.{js,jsx}": [
-      "cross-env NODE_ENV=development eslint --cache --format=pretty",
-      "git add"
-    ],
-    "{*.json,.{babelrc,eslintrc,prettierrc,stylelintrc}}": [
-      "prettier --ignore-path .eslintignore --parser json --write",
-      "git add"
-    ],
-    "*.{css,scss}": [
-      "stylelint --ignore-path .eslintignore --syntax scss --fix",
-      "prettier --ignore-path .eslintignore --single-quote --write",
-      "git add"
-    ],
-    "*.{html,md,yml}": [
-      "prettier --ignore-path .eslintignore --single-quote --write",
-      "git add"
-    ]
   },
   "build": {
     "productName": "ElectronReact",
@@ -165,6 +144,8 @@
     ]
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "2.x",
+    "@typescript-eslint/parser": "2.x",
     "@babel/core": "^7.7.5",
     "@babel/plugin-proposal-class-properties": "^7.7.4",
     "@babel/plugin-proposal-decorators": "^7.7.4",
@@ -221,6 +202,8 @@
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.17.0",
+    "eslint-config-react-app": "5.1.0",
+    "eslint-plugin-react-hooks": "1.x",
     "eslint-plugin-testcafe": "^0.2.1",
     "fbjs-scripts": "^1.2.0",
     "file-loader": "^5.0.2",
@@ -286,10 +269,5 @@
   "collective": {
     "url": "https://opencollective.com/electron-react-boilerplate-594"
   },
-  "browserslist": "electron 1.6",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  }
+  "browserslist": "electron 1.6"
 }
