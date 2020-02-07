@@ -35,7 +35,11 @@ flow-typed/npm/*
 !flow-typed/npm/module_vx.x.x.js
 
 # App packaged
-release
+release/win-unpacked
+release/builder-effective-config.yaml
+release/latest.yml
+release/RuneterraDecksTracker\ 0.18.1.msi
+release/RuneterraDecksTracker\ Setup\ 0.18.1.exe.blockmap
 app/main.prod.js
 app/main.prod.js.map
 app/renderer.prod.js

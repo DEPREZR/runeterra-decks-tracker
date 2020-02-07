@@ -1,7 +1,7 @@
 {
-  "name": "electron-react-boilerplate",
-  "productName": "ElectronReact",
-  "version": "0.18.1",
+  "name": "runeterra-decks-tracker",
+  "productName": "RuneterraDecksTracker",
+  "version": "0.0.1",
   "description": "Electron application boilerplate based on React, React Router, Webpack, React Hot Loader for rapid application development",
   "scripts": {
     "build": "concurrently \"yarn build-main\" \"yarn build-renderer\"",
@@ -35,7 +35,7 @@
     "test-watch": "yarn test --watch"
   },
   "build": {
-    "productName": "ElectronReact",
+    "productName": "RuneterraDecksTracker",
     "appId": "org.develar.ElectronReact",
     "files": [
       "dist/",
@@ -86,7 +86,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/electron-react-boilerplate/electron-react-boilerplate.git"
+    "url": "git+https://github.com/DEPREZR/runeterra-decks-tracker.git"
   },
   "author": {
     "name": "Electron React Boilerplate Maintainers",
