@@ -36,7 +36,7 @@ const Home = () => {
         <img alt="" src={`http://${SERVER_IP}:8080/card/${idToGet}/image`} />
         {gameResults.map((gameResult, index) => (
           <p key={index}>
-            DeckCode: {gameResult.deckCode} / player win:{" "}
+            DeckCode: {gameResult.deck.DeckCode} / player win:{" "}
             {gameResult.localPlayerWin ? "oui" : "non"}
           </p>
         ))}

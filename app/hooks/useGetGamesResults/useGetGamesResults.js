@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 const useGetGamesResults = () => {
   const [result, setResult] = useState({
     lastGameId: -1,
-    lastDeckCode: null,
+    lastDeck: null,
     results: []
   });
 
@@ -34,7 +34,7 @@ const useGetGamesResults = () => {
           results: [
             ...previousResult.results,
             {
-              deckCode: previousResult.lastDeckCode,
+              deck: previousResult.lastDeck,
               localPlayerWin: dataGameResult.LocalPlayerWon
             }
           ]
@@ -43,7 +43,7 @@ const useGetGamesResults = () => {
         if (dataDeck.DeckCode !== null) {
           return {
             ...previousResult,
-            lastDeckCode: dataDeck.DeckCode
+            lastDeck: dataDeck
           };
         }
         return { ...previousResult };
