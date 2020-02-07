@@ -1,12 +1,14 @@
 // @flow
 import React, { useState } from "react";
 import useGet from "../hooks/useGet";
+import useGetGamesResults from "../hooks/useGetGamesResults";
 import { SERVER_IP } from "../constants.js";
 
 const Home = () => {
   const [cardId, setCardId] = useState(null);
   const [idToGet, setIdToGet] = useState("01IO012T2");
   const { data: card, loading } = useGet(`card/${idToGet}`);
+  const gameResults = useGetGamesResults();
 
   return (
     <div className="App">
@@ -32,6 +34,12 @@ const Home = () => {
         />
         <button type="submit">valider</button>
         <img alt="" src={`http://${SERVER_IP}:8080/card/${idToGet}/image`} />
+        {gameResults.map((gameResult, index) => (
+          <p key={index}>
+            DeckCode: {gameResult.deckCode} / player win:{" "}
+            {gameResult.localPlayerWin ? "oui" : "non"}
+          </p>
+        ))}
       </form>
     </div>
   );
