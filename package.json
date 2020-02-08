@@ -223,6 +223,7 @@
     "redux-logger": "^3.0.6",
     "rimraf": "^3.0.0",
     "sass-loader": "^8.0.0",
+    "sharp": "0.24.0",
     "sinon": "^7.5.0",
     "spectron": "^9.0.0",
     "style-loader": "^1.0.1",
@@ -233,12 +234,14 @@
     "testcafe": "^1.6.1",
     "testcafe-browser-provider-electron": "^0.0.13",
     "testcafe-react-selectors": "^3.3.0",
+    "unzipper": "0.10.8",
     "url-loader": "^3.0.0",
     "webpack": "^4.41.2",
     "webpack-bundle-analyzer": "^3.6.0",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0",
     "webpack-merge": "^4.2.2",
+    "wget-improved": "3.0.2",
     "yarn": "^1.21.1"
   },
   "dependencies": {

@@ -1,58 +1,67 @@
 import React from "react";
-import { Card, Spin, Badge } from "antd";
-import useGet from "../../hooks/useGet";
+import { Card, Badge, Tooltip } from "antd";
 import PropTypes from "prop-types";
 import { regionsBackgroundColors } from "../../constants.js";
+import { retrieveCardData } from "../../cardsDataHelpers";
 // card: { cardCode: "01DE001", amount: 2 }
 const CardSummary = ({ card }) => {
-  const { data: cardData, loading } = useGet(`card/${card.cardCode}`);
+  const cardData = retrieveCardData(card.cardCode);
 
   return (
-    <Card
-      style={{ width: 300 }}
-      bodyStyle={{
-        width: 300,
-        height: 26,
-        padding: 0
-      }}
+    <Tooltip
+      title={() => (
+        <img
+          src={`https://cdn.leagueofgraphs.com/img/lor/cards/${card.cardCode}_fr_350.webp`}
+          alt=""
+        />
+      )}
+      mouseEnterDelay={0}
+      mouseLeaveDelay={0}
     >
-      {loading ? (
-        <Spin />
-      ) : cardData ? (
-        <div
-          className="d-flex justify-content-between align-items-center"
-          style={{
-            color: "white",
-            width: 300,
-            height: 26,
-            paddingRight: 5,
-            paddingLeft: 5,
-            background: regionsBackgroundColors[cardData.regionRef]
-          }}
-        >
-          <div>
-            <Badge
-              count={cardData.cost}
-              style={{ backgroundColor: "rgb(21, 39, 86)", marginRight: 5 }}
-            />
-            <span>
-              <strong>{cardData.name}</strong>
-            </span>
+      <Card
+        style={{ width: 300 }}
+        bodyStyle={{
+          width: 300,
+          height: 26,
+          padding: 0
+        }}
+      >
+        {cardData ? (
+          <div
+            className="d-flex justify-content-between align-items-center"
+            style={{
+              color: "white",
+              width: 300,
+              height: 26,
+              paddingRight: 5,
+              paddingLeft: 5,
+              background: regionsBackgroundColors[cardData.regionRef]
+            }}
+          >
+            <div>
+              <Badge
+                count={cardData.cost}
+                style={{ backgroundColor: "rgb(21, 39, 86)", marginRight: 5 }}
+              />
+              <span>
+                <strong>{cardData.name}</strong>
+              </span>
+            </div>
+            <div>
+              <span
+                style={{
+                  backgroundColor: "rgb(21, 39, 86)",
+                  border: "1px solid rgb(204, 173, 112)",
+                  padding: 2
+                }}
+              >
+                x{card.amount}
+              </span>
+            </div>
           </div>
-          <div>
-            <span
-              style={{
-                backgroundColor: "rgb(21, 39, 86)",
-                border: "1px solid rgb(204, 173, 112)",
-                padding: 2
-              }}
-            >
-              x{card.amount}
-            </span>
-          </div>
-        </div>
-      ) : null}
-    </Card>
+        ) : null}
+      </Card>
+    </Tooltip>
   );
 };
 

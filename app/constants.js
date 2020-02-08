@@ -1,6 +1,4 @@
-export const SERVER_IP = "192.168.1.37";
 export const CLIENT_IP = "localhost";
-export const API_BASE_URL = `http://${SERVER_IP}:8080/`;
 export const regionsBackgroundColors = {
   Noxus: "linear-gradient(90deg, rgb(207, 168, 167), rgb(160, 82, 79))",
   Demacia: "linear-gradient(90deg, rgb(223, 215, 193), rgb(191, 176, 131))",
