@@ -13,7 +13,10 @@ const Home = () => {
         {gameResults.map((gameResult, index) => (
           <Card key={index}>
             <DeckSummary deck={gameResult.deck.CardsInDeck} />
-            <p>Victoire : {gameResult.localPlayerWin ? "oui" : "non"}</p>
+            <p>
+              Victoires : {gameResult.winAmount} / Défaites :{" "}
+              {gameResult.defeatAmount}
+            </p>
           </Card>
         ))}
       </div>
