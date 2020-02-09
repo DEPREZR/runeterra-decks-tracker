@@ -12,7 +12,7 @@ const Home = () => {
       <div className="d-flex">
         {gameResults.map((gameResult, index) => (
           <Card key={index}>
-            <DeckSummary deck={gameResult.deck.CardsInDeck} />
+            <DeckSummary deck={gameResult.cardsInDeck} />
             <p>
               Victoires : {gameResult.winAmount} / Défaites :{" "}
               {gameResult.defeatAmount}

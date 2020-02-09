@@ -20,7 +20,7 @@ const addNewGameToResult = ({ previousResult, dataGameResult }) => {
       results: [
         ...previousResult.results,
         {
-          cardInDeck: CardsInDeck,
+          cardsInDeck: CardsInDeck,
           deckCode: DeckCode,
           winAmount: dataGameResult.LocalPlayerWon ? 1 : 0,
           defeatAmount: dataGameResult.LocalPlayerWon ? 0 : 1

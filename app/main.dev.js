@@ -10,7 +10,7 @@
  *
  * @flow
  */
-import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow, remote } from "electron";
 import { autoUpdater } from "electron-updater";
 import log from "electron-log";
 import MenuBuilder from "./menu";
@@ -30,12 +30,12 @@ if (process.env.NODE_ENV === "production") {
   sourceMapSupport.install();
 }
 
-if (
-  process.env.NODE_ENV === "development" ||
-  process.env.DEBUG_PROD === "true"
-) {
-  require("electron-debug")();
-}
+// if (
+//   process.env.NODE_ENV === "development" ||
+//   process.env.DEBUG_PROD === "true"
+// ) {
+require("electron-debug")();
+// }
 
 const installExtensions = async () => {
   const installer = require("electron-devtools-installer");
@@ -48,12 +48,12 @@ const installExtensions = async () => {
 };
 
 const createWindow = async () => {
-  if (
-    process.env.NODE_ENV === "development" ||
-    process.env.DEBUG_PROD === "true"
-  ) {
-    await installExtensions();
-  }
+  // if (
+  //   process.env.NODE_ENV === "development" ||
+  //   process.env.DEBUG_PROD === "true"
+  // ) {
+  await installExtensions();
+  // }
 
   mainWindow = new BrowserWindow({
     show: false,
@@ -82,6 +82,14 @@ const createWindow = async () => {
 
   mainWindow.on("closed", () => {
     mainWindow = null;
+  });
+
+  remote.globalShortcut.register("CommandOrControl+Shift+K", () => {
+    remote.BrowserWindow.getFocusedWindow().webContents.openDevTools();
+  });
+
+  window.addEventListener("beforeunload", () => {
+    remote.globalShortcut.unregisterAll();
   });
 
   const menuBuilder = new MenuBuilder(mainWindow);
