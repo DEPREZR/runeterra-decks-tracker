@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, Badge, Tooltip } from "antd";
 import PropTypes from "prop-types";
-import { regionsBackgroundColors } from "../../constants.js";
+import { regionsBackgroundColors, images } from "../../constants.js";
 import { retrieveCardData } from "../../cardsDataHelpers";
 // card: { cardCode: "01DE001", amount: 2 }
 const CardSummary = ({ card }) => {
@@ -9,12 +9,7 @@ const CardSummary = ({ card }) => {
 
   return (
     <Tooltip
-      title={() => (
-        <img
-          src={`https://cdn.leagueofgraphs.com/img/lor/cards/${card.cardCode}_fr_350.webp`}
-          alt=""
-        />
-      )}
+      title={() => <img src={images[`${card.cardCode}.png`].default} alt="" />}
       mouseEnterDelay={0}
       mouseLeaveDelay={0}
     >

@@ -7,3 +7,11 @@ export const regionsBackgroundColors = {
   Ionia: "linear-gradient(90deg, rgb(231, 192, 205), rgb(207, 130, 155))",
   PiltoverZaun: "linear-gradient(90deg, rgb(240, 207, 186), rgb(226, 159, 118))"
 };
+
+const importAll = require =>
+  require.keys().reduce((acc, next) => {
+    acc[next.replace("./", "")] = require(next);
+    return acc;
+  }, {});
+
+export const images = importAll(require.context("./img", false, /\.png$/));

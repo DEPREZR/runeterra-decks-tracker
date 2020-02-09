@@ -5,6 +5,8 @@ const sharp = require("sharp");
 
 fs.rmdirSync("./app/assets", { recursive: true });
 console.log("assets dir removed");
+fs.rmdirSync("./app/img", { recursive: true });
+console.log("img dir removed");
 
 let download = wget.download(
   "https://dd.b.pvp.net/datadragon-core-fr_fr.zip",
@@ -42,18 +44,15 @@ download2.on("end", function(output) {
         "./app/assets/datadragon-set1-lite-fr_fr/fr_fr/img/cards",
         (err, files) => {
           const promises = [];
-          fs.mkdirSync(
-            "./app/assets/datadragon-set1-lite-fr_fr/fr_fr/img/cards180"
-          );
+          fs.mkdirSync("./app/img");
           files.forEach(file => {
             promises.push(
               sharp(
                 `./app/assets/datadragon-set1-lite-fr_fr/fr_fr/img/cards/${file}`
               )
+                .png({ quality: 30 })
                 .resize({ width: 180 })
-                .toFile(
-                  `./app/assets/datadragon-set1-lite-fr_fr/fr_fr/img/cards180/${file}`
-                )
+                .toFile(`./app/img/${file}`)
             );
           });
 
