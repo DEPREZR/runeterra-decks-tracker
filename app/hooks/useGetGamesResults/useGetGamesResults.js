@@ -71,6 +71,13 @@ const useGetGamesResults = () => {
     }
 
     await setResult(previousResult => {
+      if (responseGameResult.hasError || responseDeck.hasError) {
+        return {
+          ...previousResult,
+          lastDeck: dataDeck,
+          lastGameId: -1
+        };
+      }
       if (
         dataGameResult.GameID !== previousResult.lastGameId &&
         dataGameResult.GameID !== -1
