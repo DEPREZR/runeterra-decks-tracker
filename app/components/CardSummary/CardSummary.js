@@ -14,11 +14,11 @@ const CardSummary = ({ card }) => {
       mouseLeaveDelay={0}
     >
       <Card
-        style={{ width: 300 }}
         bodyStyle={{
-          width: 300,
-          height: 26,
           padding: 0
+        }}
+        style={{
+          borderColor: "rgb(49,45,83)"
         }}
       >
         {cardData ? (
@@ -30,6 +30,7 @@ const CardSummary = ({ card }) => {
               height: 26,
               paddingRight: 5,
               paddingLeft: 5,
+              marginRight: 5,
               background: regionsBackgroundColors[cardData.regionRef]
             }}
           >
@@ -37,6 +38,7 @@ const CardSummary = ({ card }) => {
               <Badge
                 count={cardData.cost}
                 style={{ backgroundColor: "rgb(21, 39, 86)", marginRight: 5 }}
+                showZero
               />
               <span>
                 <strong>{cardData.name}</strong>

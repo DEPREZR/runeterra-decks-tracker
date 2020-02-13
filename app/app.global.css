@@ -14,4 +14,30 @@ body {
 
 .ant-tooltip-inner {
   background-color: transparent;
+  box-shadow: none;
+}
+
+.ant-tooltip-content {
+  border: none;
+}
+
+.ant-tooltip-arrow {
+  display: none;
+}
+
+::-webkit-scrollbar { width: 8px; }
+
+::-webkit-scrollbar-track {
+  background: rgb(42,35,73);
+  border-radius: 5px;
+}
+
+.runeterra-card-summary ::-webkit-scrollbar-track {
+  background: rgb(49,45,83);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(167,167,199);
+  border-radius: 5px;
 }

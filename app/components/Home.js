@@ -1,23 +1,24 @@
 // @flow
 import React from "react";
-import useGetGamesResults from "../hooks/useGetGamesResults";
+// import useGetGamesResults from "../hooks/useGetGamesResults";
 import DeckSummary from "./DeckSummary";
-import { Card } from "antd";
+import { gameResultsMock } from "../mocks";
 
 const Home = () => {
-  const gameResults = useGetGamesResults();
+  // const gameResults = useGetGamesResults();
 
   return (
-    <div className="App">
+    <div
+      style={{
+        overflowX: "scroll",
+        height: "100vh",
+        backgroundColor: "rgb(42,35,73)"
+      }}
+      className="p-4 d-flex align-items-center"
+    >
       <div className="d-flex">
-        {gameResults.map((gameResult, index) => (
-          <Card key={index}>
-            <DeckSummary deck={gameResult.cardsInDeck} />
-            <p>
-              Victoires : {gameResult.winAmount} / Défaites :{" "}
-              {gameResult.defeatAmount}
-            </p>
-          </Card>
+        {gameResultsMock.map((gameResult, index) => (
+          <DeckSummary key={index} gameResult={gameResult} />
         ))}
       </div>
     </div>
