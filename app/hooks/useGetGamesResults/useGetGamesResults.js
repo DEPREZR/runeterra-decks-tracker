@@ -57,23 +57,37 @@ const useGetGamesResults = () => {
   });
 
   const callback = async () => {
-    const controller = new AbortController();
-    const signal = controller.signal;
+    let timeoutId;
+    const controllerCurrentDeck = new AbortController();
+    const signalCurrentDeck = controllerCurrentDeck.signal;
+    const controllerGameResult = new AbortController();
+    const signalGameResult = controllerCurrentDeck.signal;
     const promiseAbort = new Promise(resolve => {
-      setTimeout(() => {
-        controller.abort();
+      timeoutId = setTimeout(() => {
+        try {
+          controllerCurrentDeck.abort();
+        } catch (err) {
+          console.log(err);
+        }
+        try {
+          controllerGameResult.abort();
+        } catch (err) {
+          console.log(err);
+        }
+
         resolve();
-      }, 10000);
+      }, 20000);
     });
     const promisesApi = Promise.all([
-      getCurrentDeck(signal),
-      getGameResult(signal)
+      getCurrentDeck(signalCurrentDeck),
+      getGameResult(signalGameResult)
     ]);
 
-    Promise.race([promisesApi, promiseAbort]);
+    await Promise.race([promisesApi, promiseAbort]);
+
+    if (timeoutId) clearTimeout(timeoutId);
 
     const [responseDeck, responseGameResult] = await promisesApi;
-
     let dataGameResult = { GameID: -1, LocalPlayerWon: false };
     let dataDeck = { DeckCode: null, CardsInDeck: null };
     if (!responseGameResult.hasError) {
