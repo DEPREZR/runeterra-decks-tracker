@@ -57,9 +57,17 @@ const useGetGamesResults = () => {
   });
 
   const callback = async () => {
-    const [responseDeck, responseGameResult] = await Promise.all([
-      getCurrentDeck(),
-      getGameResult()
+    const controller = new AbortController();
+    const signal = controller.signal;
+
+    const [responseDeck, responseGameResult] = await Promise.race([
+      Promise.all([getCurrentDeck(signal), getGameResult(signal)]),
+      new Promise(resolve => {
+        setTimeout(() => {
+          controller.abort();
+          resolve();
+        }, 10000);
+      })
     ]);
 
     let dataGameResult = { GameID: -1, LocalPlayerWon: false };
