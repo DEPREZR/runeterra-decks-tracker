@@ -1,5 +1,6 @@
 import { getCurrentDeck, getGameResult } from "../../gameApiHelpers";
 import { useState, useEffect } from "react";
+import { getData, writeData } from "../../fileSystemHelpers";
 
 // previousResult: { lastDeck, results };
 // dataGameResult: { LocalPlayerWon }
@@ -52,7 +53,7 @@ const useGetGamesResults = () => {
   const [result, setResult] = useState({
     lastGameId: -1,
     lastDeck: null,
-    results: []
+    results: getData() || []
   });
 
   const callback = async () => {
@@ -106,6 +107,8 @@ const useGetGamesResults = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
+
+  writeData(result.results);
 
   return result.results;
 };
