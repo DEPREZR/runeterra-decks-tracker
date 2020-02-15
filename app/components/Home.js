@@ -11,6 +11,7 @@ const Home = () => {
     <div
       style={{
         overflowX: "scroll",
+        overflowY: "hidden",
         height: "100vh",
         backgroundColor: "rgb(42,35,73)"
       }}
