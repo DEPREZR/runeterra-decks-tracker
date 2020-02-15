@@ -59,16 +59,20 @@ const useGetGamesResults = () => {
   const callback = async () => {
     const controller = new AbortController();
     const signal = controller.signal;
-
-    const [responseDeck, responseGameResult] = await Promise.race([
-      Promise.all([getCurrentDeck(signal), getGameResult(signal)]),
-      new Promise(resolve => {
-        setTimeout(() => {
-          controller.abort();
-          resolve();
-        }, 10000);
-      })
+    const promiseAbort = new Promise(resolve => {
+      setTimeout(() => {
+        controller.abort();
+        resolve();
+      }, 10000);
+    });
+    const promisesApi = Promise.all([
+      getCurrentDeck(signal),
+      getGameResult(signal)
     ]);
+
+    Promise.race([promisesApi, promiseAbort]);
+
+    const [responseDeck, responseGameResult] = await promisesApi;
 
     let dataGameResult = { GameID: -1, LocalPlayerWon: false };
     let dataDeck = { DeckCode: null, CardsInDeck: null };
