@@ -10,10 +10,11 @@
  *
  * @flow
  */
-import { app, BrowserWindow, remote } from "electron";
+import { app, BrowserWindow, Menu, remote } from "electron";
 import { autoUpdater } from "electron-updater";
 import log from "electron-log";
-import MenuBuilder from "./menu";
+
+Menu.setApplicationMenu(null);
 
 export default class AppUpdater {
   constructor() {
@@ -91,10 +92,6 @@ const createWindow = async () => {
   window.addEventListener("beforeunload", () => {
     remote.globalShortcut.unregisterAll();
   });
-
-  const menuBuilder = new MenuBuilder(mainWindow);
-  menuBuilder.buildMenu();
-
   // Remove this if your app does not use auto updates
   // eslint-disable-next-line
   new AppUpdater();
