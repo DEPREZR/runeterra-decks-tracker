@@ -50,7 +50,6 @@ app/renderer.prod.js.map
 app/style.css
 app/style.css.map
 app/assets
-app/img
 dist
 dll
 main.js
