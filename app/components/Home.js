@@ -22,7 +22,6 @@ const Home = () => {
           <DeckSummary key={index} gameResult={gameResult} />
         ))}
       </div>
-      <p>Update done</p>
     </div>
   );
 };
