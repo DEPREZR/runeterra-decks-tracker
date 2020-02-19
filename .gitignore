@@ -39,6 +39,8 @@ data.json
 
 # App packaged
 release/win-unpacked
+release/builder-effective-config.yaml
+release/latest.yml
 release/RuneterraDecksTracker*.msi
 release/RuneterraDecksTracker*.exe.blockmap
 app/main.prod.js
