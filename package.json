@@ -60,10 +60,7 @@
       ]
     },
     "win": {
-      "target": [
-        "nsis",
-        "msi"
-      ]
+      "publish": ["github"]
     },
     "linux": {
       "target": [
@@ -79,7 +76,7 @@
     },
     "publish": {
       "provider": "github",
-      "owner": "runeterra-decks-tracker",
+      "owner": "DEPREZR",
       "repo": "runeterra-decks-tracker",
       "private": false
     }
