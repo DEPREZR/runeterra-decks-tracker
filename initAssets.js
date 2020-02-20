@@ -13,7 +13,7 @@ let download = wget.download(
   "./datadragon-core-fr_fr.zip"
 );
 let download2 = wget.download(
-  "https://dd.b.pvp.net/datadragon-set1-lite-fr_fr.zip",
+  "https://dd.b.pvp.net/latest/set1-lite-fr_fr.zip",
   "./datadragon-set1-lite-fr_fr.zip"
 );
 
