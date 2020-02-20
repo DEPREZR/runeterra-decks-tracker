@@ -38,6 +38,7 @@ flow-typed/npm/*
 data.json
 
 # App packaged
+app/main.prod.js.LICENSE.txt
 release
 app/main.prod.js
 app/main.prod.js.map
