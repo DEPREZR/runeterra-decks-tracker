@@ -15,13 +15,10 @@ import { autoUpdater } from "electron-updater";
 import log from "electron-log";
 import MenuBuilder from "./menu";
 
-export default class AppUpdater {
-  constructor() {
-    log.transports.file.level = "info";
-    autoUpdater.logger = log;
-    autoUpdater.checkForUpdatesAndNotify();
-  }
-}
+// setup auto update
+autoUpdater.logger = log;
+autoUpdater.logger.transports.file.level = "info";
+log.info("App starting...");
 
 let mainWindow = null;
 
@@ -94,10 +91,6 @@ const createWindow = async () => {
 
   const menuBuilder = new MenuBuilder(mainWindow);
   menuBuilder.buildMenu();
-
-  // Remove this if your app does not use auto updates
-  // eslint-disable-next-line
-  new AppUpdater();
 };
 
 /**
@@ -113,6 +106,10 @@ app.on("window-all-closed", () => {
 });
 
 app.on("ready", createWindow);
+
+app.on("ready", function() {
+  autoUpdater.checkForUpdatesAndNotify();
+});
 
 app.on("activate", () => {
   // On macOS it's common to re-create a window in the app when the
