@@ -60,6 +60,7 @@
       ]
     },
     "win": {
+      "target": ["nsis"],
       "publish": ["github"]
     },
     "linux": {
