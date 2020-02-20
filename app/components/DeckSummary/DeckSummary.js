@@ -33,6 +33,7 @@ const DeckSummary = ({ gameResult }) => {
         style={{ color: "rgb(167,167,199)" }}
       >
         <span className="ml-3">Victoires : {gameResult.winAmount}</span>
+        <span>/</span>
         <span className="mr-3">Défaites : {gameResult.defeatAmount}</span>
       </div>
     </div>
