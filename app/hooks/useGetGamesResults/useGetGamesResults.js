@@ -52,7 +52,7 @@ const addNewGameToResult = ({ previousResult, dataGameResult }) => {
 const useGetGamesResults = () => {
   const [result, setResult] = useState({
     lastGameId: -1,
-    lastDeck: null,
+    lastDeck: { DeckCode: null, CardsInDeck: null },
     results: getData() || []
   });
 
