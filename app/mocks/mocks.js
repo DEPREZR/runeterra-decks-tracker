@@ -73,9 +73,9 @@ export const gameResultsMock = [
     winAmount: 1250,
     defeatAmount: 1125
   },
-  { ...gameResultMock },
-  { ...gameResultMock },
-  { ...gameResultMock },
+  { ...gameResultMock, winAmount: 6, defeatAmount: 4 },
+  { ...gameResultMock, winAmount: 5, defeatAmount: 0 },
+  { ...gameResultMock, winAmount: 0, defeatAmount: 4 },
   { ...gameResultMock },
   { ...gameResultMock }
 ];
