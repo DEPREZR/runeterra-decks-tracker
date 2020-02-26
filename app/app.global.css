@@ -41,3 +41,7 @@ body {
   background: rgb(167,167,199);
   border-radius: 5px;
 }
+
+.runeterra-card-summary .ant-progress-text {
+  color: rgb(167,167,199);
+}

@@ -1,7 +1,7 @@
 import React from "react";
 import CardsInDeck from "../CardsInDeck";
 import PropTypes from "prop-types";
-import { Card } from "antd";
+import { Card, Progress } from "antd";
 // const gameResultMock = {
 //   cardsInDeck: deckMock,
 //   deckCode:
@@ -9,7 +9,26 @@ import { Card } from "antd";
 //   winAmount: 3,
 //   defeatAmount: 4
 // };
+
+const getWinrate = gameResult => {
+  const totalGames = gameResult.winAmount + gameResult.defeatAmount;
+
+  if (!totalGames) return undefined;
+
+  return Math.round((gameResult.winAmount / totalGames) * 100);
+};
+
+const getWinrateColor = winrate => {
+  if (!winrate) return "grey";
+  if (winrate < 45) return "red";
+  if (winrate < 55) return "yellow";
+
+  return "green";
+};
+
 const DeckSummary = ({ gameResult }) => {
+  const winrate = getWinrate(gameResult);
+
   return (
     <div className="mr-3 runeterra-card-summary">
       <Card
@@ -21,7 +40,7 @@ const DeckSummary = ({ gameResult }) => {
       >
         <div
           style={{
-            height: "80vh",
+            height: "60vh",
             overflowY: "auto"
           }}
         >
@@ -33,7 +52,13 @@ const DeckSummary = ({ gameResult }) => {
         style={{ color: "rgb(167,167,199)" }}
       >
         <span className="ml-3">Victoires : {gameResult.winAmount}</span>
-        <span>/</span>
+        <Progress
+          width={100}
+          status="normal"
+          type="circle"
+          strokeColor={{ "0%": getWinrateColor(winrate) }}
+          percent={winrate || 0}
+        />
         <span className="mr-3">Défaites : {gameResult.defeatAmount}</span>
       </div>
     </div>
