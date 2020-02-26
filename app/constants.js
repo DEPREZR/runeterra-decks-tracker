@@ -1,4 +1,4 @@
-export const CLIENT_IP = "localhost";
+export const CLIENT_IP = "127.0.0.1";
 export const regionsBackgroundColors = {
   Noxus: "linear-gradient(90deg, rgb(207, 168, 167), rgb(160, 82, 79))",
   Demacia: "linear-gradient(90deg, rgb(223, 215, 193), rgb(191, 176, 131))",
