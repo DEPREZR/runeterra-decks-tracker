@@ -52,13 +52,15 @@ const DeckSummary = ({ gameResult }) => {
         style={{ color: "rgb(167,167,199)" }}
       >
         <span className="ml-3">Victoires : {gameResult.winAmount}</span>
-        <Progress
-          width={100}
-          status="normal"
-          type="circle"
-          strokeColor={{ "0%": getWinrateColor(winrate) }}
-          percent={winrate || 0}
-        />
+        <div className="mt-3">
+          <Progress
+            width={100}
+            status="normal"
+            type="circle"
+            strokeColor={{ "0%": getWinrateColor(winrate) }}
+            percent={winrate || 0}
+          />
+        </div>
         <span className="mr-3">Défaites : {gameResult.defeatAmount}</span>
       </div>
     </div>
