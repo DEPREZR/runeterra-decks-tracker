@@ -17,7 +17,8 @@ const addNewGameToResult = ({ previousResult, dataGameResult }) => {
   if (resultOfDeckIndex === -1)
     return {
       ...previousResult,
-      lastGameId: dataGameResult.GameID,
+      lastGameId: -1,
+      lastDeck: { DeckCode: null, CardsInDeck: null },
       results: [
         ...previousResult.results,
         {
@@ -33,7 +34,8 @@ const addNewGameToResult = ({ previousResult, dataGameResult }) => {
 
   return {
     ...previousResult,
-    lastGameId: dataGameResult.GameID,
+    lastGameId: -1,
+    lastDeck: { DeckCode: null, CardsInDeck: null },
     results: [
       ...results,
       {
@@ -115,7 +117,8 @@ const useGetGamesResults = () => {
       }
       if (
         dataGameResult.GameID !== previousResult.lastGameId &&
-        dataGameResult.GameID !== -1
+        dataGameResult.GameID !== -1 &&
+        previousResult.lastDeck.DeckCode
       ) {
         return addNewGameToResult({ previousResult, dataGameResult });
       } else {
