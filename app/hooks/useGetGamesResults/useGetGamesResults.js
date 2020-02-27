@@ -2,7 +2,7 @@ import { getCurrentDeck, getGameResult } from "../../gameApiHelpers";
 import { useState, useEffect } from "react";
 import { getData, writeData } from "../../fileSystemHelpers";
 
-// previousResult: { lastDeck, results };
+// previousResult: { lastDeck, lastGameId, results };
 // dataGameResult: { LocalPlayerWon }
 // result (elem in results): { cardsInDeck, deckCode, winAmount, defeatAmount }
 const addNewGameToResult = ({ previousResult, dataGameResult }) => {
@@ -17,7 +17,6 @@ const addNewGameToResult = ({ previousResult, dataGameResult }) => {
   if (resultOfDeckIndex === -1)
     return {
       ...previousResult,
-      lastGameId: -1,
       lastDeck: { DeckCode: null, CardsInDeck: null },
       results: [
         ...previousResult.results,
@@ -34,7 +33,6 @@ const addNewGameToResult = ({ previousResult, dataGameResult }) => {
 
   return {
     ...previousResult,
-    lastGameId: -1,
     lastDeck: { DeckCode: null, CardsInDeck: null },
     results: [
       ...results,
