@@ -17,6 +17,7 @@ const addNewGameToResult = ({ previousResult, dataGameResult }) => {
   if (resultOfDeckIndex === -1)
     return {
       ...previousResult,
+      lastGameId: dataGameResult.GameID,
       lastDeck: { DeckCode: null, CardsInDeck: null },
       results: [
         ...previousResult.results,
@@ -33,6 +34,7 @@ const addNewGameToResult = ({ previousResult, dataGameResult }) => {
 
   return {
     ...previousResult,
+    lastGameId: dataGameResult.GameID,
     lastDeck: { DeckCode: null, CardsInDeck: null },
     results: [
       ...results,
