@@ -1,7 +1,7 @@
 {
   "name": "runeterra-decks-tracker",
   "productName": "RuneterraDecksTracker",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Runeterra decks statistics tracker, with electron and react, based on electron-react-boilerplate",
   "scripts": {
     "build": "concurrently \"yarn build-main\" \"yarn build-renderer\"",

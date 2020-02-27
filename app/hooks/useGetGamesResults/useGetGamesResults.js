@@ -91,10 +91,18 @@ const useGetGamesResults = () => {
     let dataGameResult = { GameID: -1, LocalPlayerWon: false };
     let dataDeck = { DeckCode: null, CardsInDeck: null };
     if (!responseGameResult.hasError) {
-      dataGameResult = await responseGameResult.json();
+      try {
+        dataGameResult = await responseGameResult.json();
+      } catch (err) {
+        console.log(err);
+      }
     }
     if (!responseDeck.hasError) {
-      dataDeck = await responseDeck.json();
+      try {
+        dataDeck = await responseDeck.json();
+      } catch (err) {
+        console.log(err);
+      }
     }
 
     await setResult(previousResult => {
