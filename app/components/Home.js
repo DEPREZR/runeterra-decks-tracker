@@ -5,7 +5,7 @@ import DeckSummary from "./DeckSummary";
 // import { gameResultsMock } from "../mocks";
 
 const Home = () => {
-  const gameResults = useGetGamesResults();
+  const { gameResults, removeGameResult } = useGetGamesResults();
 
   return (
     <div
@@ -19,7 +19,11 @@ const Home = () => {
     >
       <div className="d-flex">
         {gameResults.map((gameResult, index) => (
-          <DeckSummary key={index} gameResult={gameResult} />
+          <DeckSummary
+            key={index}
+            gameResult={gameResult}
+            removeGameResult={removeGameResult}
+          />
         ))}
       </div>
     </div>

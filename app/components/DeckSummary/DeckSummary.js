@@ -1,7 +1,7 @@
 import React from "react";
 import CardsInDeck from "../CardsInDeck";
 import PropTypes from "prop-types";
-import { Card, Progress } from "antd";
+import { Card, Progress, Button } from "antd";
 // const gameResultMock = {
 //   cardsInDeck: deckMock,
 //   deckCode:
@@ -26,7 +26,7 @@ const getWinrateColor = winrate => {
   return "green";
 };
 
-const DeckSummary = ({ gameResult }) => {
+const DeckSummary = ({ gameResult, removeGameResult }) => {
   const winrate = getWinrate(gameResult);
 
   return (
@@ -63,12 +63,23 @@ const DeckSummary = ({ gameResult }) => {
         </div>
         <span className="mr-3">Défaites : {gameResult.defeatAmount}</span>
       </div>
+      <Button
+        type="primary"
+        danger
+        onClick={e => {
+          e.preventDefault();
+          removeGameResult(gameResult.deckCode);
+        }}
+      >
+        Supprimer ces données
+      </Button>
     </div>
   );
 };
 
 DeckSummary.propTypes = {
-  gameResult: PropTypes.object.isRequired
+  gameResult: PropTypes.object.isRequired,
+  removeGameResult: PropTypes.func.isRequired
 };
 
 export default DeckSummary;
