@@ -52,9 +52,10 @@ const addNewGameToResult = ({ previousResult, dataGameResult }) => {
 };
 
 const getRemoveGameResult = setResult => deckCode => {
-  setResult(previousResult =>
-    previousResult.filter(deck => deck.deckCode !== deckCode)
-  );
+  setResult(previousResult => ({
+    ...previousResult,
+    results: previousResult.results.filter(deck => deck.deckCode !== deckCode)
+  }));
 };
 
 const useGetGamesResults = () => {

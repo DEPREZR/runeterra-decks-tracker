@@ -63,16 +63,18 @@ const DeckSummary = ({ gameResult, removeGameResult }) => {
         </div>
         <span className="mr-3">Défaites : {gameResult.defeatAmount}</span>
       </div>
-      <Button
-        type="primary"
-        danger
-        onClick={e => {
-          e.preventDefault();
-          removeGameResult(gameResult.deckCode);
-        }}
-      >
-        Supprimer ces données
-      </Button>
+      <div className="d-flex justify-content-center mt-3">
+        <Button
+          type="primary"
+          style={{ backgroundColor: "#ff4d4f", borderColor: "#ff4d4f" }}
+          onClick={e => {
+            e.preventDefault();
+            removeGameResult(gameResult.deckCode);
+          }}
+        >
+          Supprimer ces données
+        </Button>
+      </div>
     </div>
   );
 };
