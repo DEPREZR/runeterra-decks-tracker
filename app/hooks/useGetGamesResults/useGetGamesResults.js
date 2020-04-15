@@ -51,6 +51,12 @@ const addNewGameToResult = ({ previousResult, dataGameResult }) => {
   };
 };
 
+const getRemoveGameResult = setResult => deckCode => {
+  setResult(previousResult =>
+    previousResult.filter(deck => deck.deckCode !== deckCode)
+  );
+};
+
 const useGetGamesResults = () => {
   const [result, setResult] = useState({
     lastGameId: -1,
@@ -147,7 +153,10 @@ const useGetGamesResults = () => {
 
   writeData(result.results);
 
-  return result.results;
+  return {
+    gameResults: result.results,
+    removeGameResult: getRemoveGameResult(setResult)
+  };
 };
 
 export default useGetGamesResults;
