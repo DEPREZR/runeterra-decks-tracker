@@ -5,7 +5,9 @@ export const regionsBackgroundColors = {
   Freljord: "linear-gradient(90deg, rgb(172, 219, 236), rgb(90, 184, 218))",
   ShadowIsles: "linear-gradient(90deg, rgb(157, 190, 183), rgb(59, 125, 111))",
   Ionia: "linear-gradient(90deg, rgb(231, 192, 205), rgb(207, 130, 155))",
-  PiltoverZaun: "linear-gradient(90deg, rgb(240, 207, 186), rgb(226, 159, 118))"
+  PiltoverZaun:
+    "linear-gradient(90deg, rgb(240, 207, 186), rgb(226, 159, 118))",
+  Bilgewater: "linear-gradient(90deg, rgb(244,137,92), rgb(200,102,68))"
 };
 
 const importAll = require =>

@@ -9,7 +9,7 @@ fs.rmdirSync("./app/img", { recursive: true });
 console.log("img dir removed");
 
 let download = wget.download(
-  "https://dd.b.pvp.net/datadragon-core-fr_fr.zip",
+  "https://dd.b.pvp.net/latest/core-fr_fr.zip",
   "./datadragon-core-fr_fr.zip"
 );
 let download2 = wget.download(
